@@ -1,0 +1,57 @@
+Script started on 2023-02-06 21:49:41-05:00 [TERM="xterm-256color" TTY="/dev/pts/1" COLUMNS="121" LINES="21"]
+]0;zs35@gold03: ~/Desktop/214/projects/04/clojure[01;32mzs35@gold03[00m:[01;34m~/Desktop/214/projects/04/clojure[00m$ cat [K[K[Kd src
+]0;zs35@gold03: ~/Desktop/214/projects/04/clojure/src[01;32mzs35@gold03[00m:[01;34m~/Desktop/214/projects/04/clojure/src[00m$ cat clo[K[K[K[K factorial [K.clj
+;;;; factorial.clj computes the factorial of the input.
+;;;;
+;;;; Input: n, a number
+;;;; Output: n!
+;;;;
+;;;; Student Name: ZeAi Sun
+;;;; Date: Feb 6, 2023
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(ns factorial)                                 ; name the program
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; getFactorial() recursively computes the n! value.
+;;; Receive: n, a number
+;;; Output: n!
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defn getFactorial [x]
+   (loop [i 1 result 1]
+      (if (<= i x)
+         (recur (+ i 1)  (* result i))
+         result
+      )
+   )
+)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; -main is a 'driver' for the getFactorial() functions.
+;;; Input: n
+;;; Output: n!
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defn -main []
+ (print "To compute n!, enter n: ") (flush)
+ (let
+    [ n (int (read)) ] 
+    (println (getFactorial n))
+ )
+)
+
+]0;zs35@gold03: ~/Desktop/214/projects/04/clojure/src[01;32mzs35@gold03[00m:[01;34m~/Desktop/214/projects/04/clojure/src[00m$ cd ..
+]0;zs35@gold03: ~/Desktop/214/projects/04/clojure[01;32mzs35@gold03[00m:[01;34m~/Desktop/214/projects/04/clojure[00m$ clojure -m factorial
+To compute n!, enter n: 5
+120
+]0;zs35@gold03: ~/Desktop/214/projects/04/clojure[01;32mzs35@gold03[00m:[01;34m~/Desktop/214/projects/04/clojure[00m$ clojure -m factorial
+To compute n!, enter n: 6
+720
+]0;zs35@gold03: ~/Desktop/214/projects/04/clojure[01;32mzs35@gold03[00m:[01;34m~/Desktop/214/projects/04/clojure[00m$ clojure -m factorial
+To compute n!, enter n: 11' 
+39916800
+]0;zs35@gold03: ~/Desktop/214/projects/04/clojure[01;32mzs35@gold03[00m:[01;34m~/Desktop/214/projects/04/clojure[00m$ exit
+exit
+
+Script done on 2023-02-06 21:50:12-05:00 [COMMAND_EXIT_CODE="0"]

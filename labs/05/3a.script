@@ -1,0 +1,13 @@
+Script started on 2023-02-06 20:44:17-05:00 [TERM="xterm-256color" TTY="/dev/pts/1" COLUMNS="80" LINES="28"]
+]0;zs35@gold03: ~/Desktop/214/labs/05[01;32mzs35@gold03[00m:[01;34m~/Desktop/214/labs/05[00m$ clojure
+[KClojure 1.10.1
+[Kuser=> [Kuser=> [Kuser=> (defn negate [sequence][sequence] (map (fn [x][x] (- 0 x)(- 0 x))(fn [x] (- 0 x)) sequence)(map (fn [x] (- 0 x)) sequence))user=> (defn negate [sequence] (map (fn [x] (- 0 x)) sequence))user=> [K(defn negate [sequence] (map (fn [x] (- 0 x)) sequence))
+[K#'user/negate
+user=> [Kuser=> [Kuser=> (negate [-1 2 -3][-1 2 -3])user=> (negate [-1 2 -3])user=> [K(negate [-1 2 -3])
+(1 -2 3)
+user=> [Kuser=> [Kuser=> (negate [4 -5 6][4 -5 6])user=> (negate [4 -5 6])user=> [K(negate [4 -5 6])
+(-4 5 -6)
+user=> [Kuser=> [Kuser=> 
+[K]0;zs35@gold03: ~/Desktop/214/labs/05[01;32mzs35@gold03[00m:[01;34m~/Desktop/214/labs/05[00m$ exit
+
+Script done on 2023-02-06 20:44:46-05:00 [COMMAND_EXIT_CODE="0"]

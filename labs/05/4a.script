@@ -1,0 +1,15 @@
+Script started on 2023-02-06 21:00:03-05:00 [TERM="xterm-256color" TTY="/dev/pts/1" COLUMNS="80" LINES="28"]
+]0;zs35@gold03: ~/Desktop/214/labs/05[01;32mzs35@gold03[00m:[01;34m~/Desktop/214/labs/05[00m$ clojure
+[KClojure 1.10.1
+[Kuser=> [Kuser=> [Kuser=> (defn sumSquares [x][x] (reduce + (map * x x)(map * x x))(reduce + (map * x x)))user=> (defn sumSquares [x] (reduce + (map * x x)))user=> [K(defn sumSquares [x] (reduce + (map * x x)))
+[K#'user/sumSquares
+user=> [Kuser=> [Kuser=> (sumSquares '(1 2 3)(1 2 3))user=> [K(sumSquares '(1 2 3))
+14
+user=> [Kuser=> [Kuser=> (sumSquares '(1 2 3 4 5)(1 2 3 4 5))user=> [K(sumSquares '(1 2 3 4 5))
+55
+user=> [Kuser=> [Kuser=> (sumSquares [-1 -2 -3 0 1][-1 -2 -3 0 1])user=> (sumSquares [-1 -2 -3 0 1])user=> [K(sumSquares [-1 -2 -3 0 1])
+15
+user=> [Kuser=> [Kuser=> 
+[K]0;zs35@gold03: ~/Desktop/214/labs/05[01;32mzs35@gold03[00m:[01;34m~/Desktop/214/labs/05[00m$ exit
+
+Script done on 2023-02-06 21:00:25-05:00 [COMMAND_EXIT_CODE="0"]

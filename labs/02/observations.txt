@@ -1,0 +1,119 @@
+/**************************
+/* Student Name: ZeAi Sun
+/* Date: Jan 16, 2023
+/**************************
+
+/*********************************************
+
+Flex Example 1:
+* In line 726-743, there is a switch statement that has 3 cases:
+* For case 1, the program responds to "start" and prints "start command received";
+* For case 2, the program responds to "stop" and prints "stop command received";
+* For case 3, the program simply echos the input if the input is neither "start" nor "stop".
+
+/*********************************************
+
+Flex Example 2:
+* Input: 12, Output: NUMBER
+* Input: sjsjs, Output: WORD
+* Input: jdj2, Output: WORD
+* Input: 2jdj, Output: NUMBER WORD
+* Input: 2_f, Output: NUMBER _WORD
+  * When an underscore is included, it is separated from other symbols and treated as another category.
+
+The extended version:
+%{
+#include <stdio.h>
+%}
+
+%%
+[0123456789]+           printf("NUMBER\n");
+[a-zA-Z][a-zA-Z0-9]*    printf("WORD\n");
+[a-zA-Z_][a-zA-Z0-9_]*  printf("WORD\n");
+%%
+
+Test:
+* Input: 2, Output: NUMBER
+* Input: s, Output: WORD
+* Input: s2, Output: WORD
+* Input: f_2, Output: WORD
+* Input: D33_D, Output: WORD
+
+/*********************************************
+
+Flex Example 3:
+
+KEYWORD: class
+IDENTIFIER: StudentInfo
+PUNCTUATION: {
+KEYWORD: public
+PUNCTUATION: :
+IDENTIFIER: StudentInfo
+PUNCTUATION: (
+PUNCTUATION: )
+PUNCTUATION: {
+IDENTIFIER: myGPA
+OPERATOR: =
+DOUBLE: 0.0 (0)
+PUNCTUATION: ;
+IDENTIFIER: myHours
+OPERATOR: =
+INTEGER: 0 (0)
+PUNCTUATION: ;
+PUNCTUATION: }
+IDENTIFIER: StudentInfo
+PUNCTUATION: (
+KEYWORD: double
+IDENTIFIER: gpa
+PUNCTUATION: ,
+KEYWORD: int
+IDENTIFIER: hours
+PUNCTUATION: )
+PUNCTUATION: {
+IDENTIFIER: myGPA
+OPERATOR: =
+IDENTIFIER: gpa
+PUNCTUATION: ;
+IDENTIFIER: myHours
+OPERATOR: =
+IDENTIFIER: hours
+PUNCTUATION: ;
+PUNCTUATION: }
+KEYWORD: private
+PUNCTUATION: :
+KEYWORD: double
+IDENTIFIER: myGPA
+PUNCTUATION: ;
+KEYWORD: int
+IDENTIFIER: myHours
+PUNCTUATION: ;
+PUNCTUATION: }
+PUNCTUATION: ;
+
+/*********************************************
+
+Bison: Example 4
+* A terminal doesn't need to call other commands: it will give an eventual output.
+* A non-terminal needs to keep calling other commands to keep working.
+
+/*********************************************
+
+Bison: Example 5
+* Input: heat on, Output: Heat turned on
+* Input: heat off, Output: Heat turned off
+* Input: set temperature 22, Output: Temperature set to 22
+* Input: set temperature 57, Output: Temperature set to 57
+
+/*********************************************
+
+Exercise: Example 6
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,11 @@
+Script started on 2023-02-06 19:51:41-05:00 [TERM="xterm-256color" TTY="/dev/pts/1" COLUMNS="80" LINES="66"]
+]0;zs35@gold03: ~/Desktop/214/labs/05[01;32mzs35@gold03[00m:[01;34m~/Desktop/214/labs/05[00m$ clojure
+[KClojure 1.10.1
+[Kuser=> [Kuser=> [Kuser=> (fn [x y z][x y z] (max (Math/abs x)(Math/abs x) (Math/abs y)(Math/abs y) (Math/abs z)(Math/abs z))user=> (fn [x y z] (max (Math/abs x) (Math/abs y) (Math/abs z)))user=> (fn [x y z] (max (Math/abs x) (Math/abs y) (Math/abs z)))user=> [K(fn [x y z] (max (Math/abs x) (Math/abs y) (Math/abs z)))
+[K#object[user$eval136$fn__137 0x25d958c6 "user$eval136$fn__137@25d958c6"]
+user=> [Kuser=> [Kuser=> ((fn [x y z][x y z] (max (Math/abs x)(Math/abs x) (Math/abs y)(Math/abs y) (Math/abs z)(Math/abs z))user=> ((fn [x y z] (max (Math/abs x) (Math/abs y) (Math/abs z)))user=> ((fn [x y z] (max (Math/abs x) (Math/abs y) (Math/abs z))) 3 4 5)user=> ((fn [x y z] (max (Math/abs x) (Math/abs y) (Math/abs z))) 3 4 5)user=> [K((fn [x y z] (max (Math/abs x) (Math/abs y) (Math/abs z))) 3 4 5)
+5
+user=> [Kuser=> [Kuser=> 
+[K]0;zs35@gold03: ~/Desktop/214/labs/05[01;32mzs35@gold03[00m:[01;34m~/Desktop/214/labs/05[00m$ exit
+
+Script done on 2023-02-06 19:52:39-05:00 [COMMAND_EXIT_CODE="0"]

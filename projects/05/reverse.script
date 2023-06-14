@@ -1,0 +1,58 @@
+Script started on 2023-02-13 23:16:14-05:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="80" LINES="24"]
+]0;zs35@gold03: ~/Desktop/214/projects/05/clojure[01;32mzs35@gold03[00m:[01;34m~/Desktop/214/projects/05/clojure[00m$ cat reverse           cd    ca  t    c d scr
+bash: cd: scr: No such file or directory
+]0;zs35@gold03: ~/Desktop/214/projects/05/clojure[01;32mzs35@gold03[00m:[01;34m~/Desktop/214/projects/05/clojure[00m$ cd scr  rc
+]0;zs35@gold03: ~/Desktop/214/projects/05/clojure/src[01;32mzs35@gold03[00m:[01;34m~/Desktop/214/projects/05/clojure/src[00m$ cat reverse.clj
+;;;; reverse.clj reverses the elements being inputted.
+;;;;
+;;;; Input: n-sequence, a sequence of items
+;;;; Output: the reversed sequence
+;;;;
+;;;; Student Name: ZeAi Sun
+;;;; Date: Feb 9, 2023
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(ns reverse)                            ; name the program
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; my-reverse() recursively reverses the input value.
+;;; Receive: n-sequence, a sequence of items
+;;; Output: the reversed sequence
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defn my-reverse [n-sequence]
+    (if (<= (count n-sequence) 1)
+        n-sequence
+        (do
+            (if (list? (first n-sequence))
+                (concat (my-reverse (rest n-sequence)) (my-reverse (list (first n-sequence))))
+                (concat (my-reverse (rest n-sequence)) (list (first n-sequence)))
+            )
+        )
+    )
+)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; -main is a 'driver' for the my-reverse() functions.
+;;; Input: n-sequence, a sequence of items
+;;; Output: the reversed sequence
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defn -main []
+ (print "To reverse, input a sequence: ") (flush)
+ (let
+    [ n (sequence (read)) ] 
+    (println (my-reverse n))
+ )
+)]0;zs35@gold03: ~/Desktop/214/projects/05/clojure/src[01;32mzs35@gold03[00m:[01;34m~/Desktop/214/projects/05/clojure/src[00m$ [K]0;zs35@gold03: ~/Desktop/214/projects/05/clojure/src[01;32mzs35@gold03[00m:[01;34m~/Desktop/214/projects/05/clojure/src[00m$ [K]0;zs35@gold03: ~/Desktop/214/projects/05/clojure/src[01;32mzs35@gold03[00m:[01;34m~/Desktop/214/projects/05/clojure/src[00m$ [K]0;zs35@gold03: ~/Desktop/214/projects/05/clojure/src[01;32mzs35@gold03[00m:[01;34m~/Desktop/214/projects/05/clojure/src[00m$ [K]0;zs35@gold03: ~/Desktop/214/projects/05/clojure/src[01;32mzs35@gold03[00m:[01;34m~/Desktop/214/projects/05/clojure/src[00m$ [K]0;zs35@gold03: ~/Desktop/214/projects/05/clojure/src[01;32mzs35@gold03[00m:[01;34m~/Desktop/214/projects/05/clojure/src[00m$ [K]0;zs35@gold03: ~/Desktop/214/projects/05/clojure/src[01;32mzs35@gold03[00m:[01;34m~/Desktop/214/projects/05/clojure/src[00m$ clojure -m reverse
+To reverse, input a sequence: (1 2 3)
+(3 2 1)
+]0;zs35@gold03: ~/Desktop/214/projects/05/clojure/src[01;32mzs35@gold03[00m:[01;34m~/Desktop/214/projects/05/clojure/src[00m$ clojure -m reverse
+To reverse, input a sequence: ()
+()
+]0;zs35@gold03: ~/Desktop/214/projects/05/clojure/src[01;32mzs35@gold03[00m:[01;34m~/Desktop/214/projects/05/clojure/src[00m$ clojure -m reverse
+To reverse, input a sequence: ((1 2) 3 4)
+(4 3 (1 2))
+]0;zs35@gold03: ~/Desktop/214/projects/05/clojure/src[01;32mzs35@gold03[00m:[01;34m~/Desktop/214/projects/05/clojure/src[00m$ exit
+
+Script done on 2023-02-13 23:17:33-05:00 [COMMAND_EXIT_CODE="0"]

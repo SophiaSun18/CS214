@@ -1,0 +1,134 @@
+V "GNAT Lib v7"
+P ZX
+
+RN
+RV NO_DIRECT_BOOLEAN_OPERATORS
+RV NO_EXCEPTION_HANDLERS
+RV NO_EXCEPTIONS
+RV NO_FLOATING_POINT
+RV NO_IO
+RV NO_STANDARD_STORAGE_POOLS
+RV NO_ELABORATION_CODE
+RV SPARK_05
+
+U temp_package%b	temp_package.adb	2863ea34 OO PK
+W ada%s			ada.ads			ada.ali
+W ada.exceptions%s	a-except.adb		a-except.ali
+W ada.float_text_io%s	a-flteio.ads		a-flteio.ali
+W ada.strings%s		a-string.ads		a-string.ali
+W ada.strings.fixed%s	a-strfix.adb		a-strfix.ali
+W ada.strings.maps%s	a-strmap.adb		a-strmap.ali
+W ada.tags%s		a-tags.adb		a-tags.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+W system%s		system.ads		system.ali
+W system.exception_table%s  s-exctab.adb	s-exctab.ali
+W system.img_real%s	s-imgrea.adb		s-imgrea.ali
+W system.standard_library%s  s-stalib.adb	s-stalib.ali
+W system.val_real%s	s-valrea.adb		s-valrea.ali
+
+U temp_package%s	temp_package.ads	f4954c4e EE NE OO PK
+
+D ada.ads		20170106103348 76789da1 ada%s
+D a-charac.ads		20070912115821 2d3ec45b ada.characters%s
+D a-chlat1.ads		20140225151544 66457d31 ada.characters.latin_1%s
+D a-except.ads		20151016123252 291912d5 ada.exceptions%s
+D a-flteio.ads		20070406091342 e18a47a0 ada.float_text_io%s
+D a-ioexce.ads		20140225151544 e4a01f64 ada.io_exceptions%s
+D a-stream.ads		20141120112812 119b8fb3 ada.streams%s
+D a-string.ads		20070406091342 90ac6797 ada.strings%s
+D a-strfix.ads		20101008130255 d07c346e ada.strings.fixed%s
+D a-strmap.ads		20140611123156 e8bb714a ada.strings.maps%s
+D a-tags.ads		20151016130316 01f5e3ef ada.tags%s
+D a-textio.ads		20140717063745 386df5d4 ada.text_io%s
+D a-tiflio.ads		20140717063513 56fbda09 ada.text_io.float_io%s
+D a-unccon.ads		20170106103348 31484697 ada.unchecked_conversion%s
+D interfac.ads		20160502101001 5ab55268 interfaces%s
+D i-cstrea.ads		20140801100435 e53d8b8e interfaces.c_streams%s
+D system.ads		20170510173650 4635ec04 system%s
+D s-crtl.ads		20141120112812 0ebbdb71 system.crtl%s
+D s-exctab.ads		20140225151139 54135002 system.exception_table%s
+D s-ficobl.ads		20140718105747 078245e4 system.file_control_block%s
+D s-imgrea.ads		20090409150019 c7a851e2 system.img_real%s
+D s-parame.ads		20140801093848 7e2a0d7f system.parameters%s
+D s-soflin.ads		20151020124036 14e1eb6c system.soft_links%s
+D s-stache.ads		20140225151139 a37c21ec system.stack_checking%s
+D s-stalib.ads		20151112104907 09bd3940 system.standard_library%s
+D s-stoele.ads		20140225151139 2dc34a04 system.storage_elements%s
+D s-traent.ads		20140730135025 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20160502101423 34867c83 system.unsigned_types%s
+D s-valrea.ads		20150106102044 fe297711 system.val_real%s
+D s-wchcon.ads		20140718092328 1b7d22d2 system.wch_con%s
+D temp_package.ads	20230321195511 f4954c4e temp_package%s
+D temp_package.adb	20230323231713 3dd6512a temp_package%b
+X 1 ada.ads
+16K9*Ada 20e8 32|8r6 8r23 9r6 9r29 10r6 10r29 11r6 11r28
+X 5 a-flteio.ads
+20K13*Float_Text_IO[13|46] 32|9w10 9r33
+X 8 a-string.ads
+16K13*Strings 35e16 32|10r10 10r33 11r10 11r32
+X 9 a-strfix.ads
+18K21*Fixed 251e22 32|10w18 10r41
+X 10 a-strmap.ads
+38K21*Maps 411e21 32|11w18 11r40
+X 12 a-textio.ads
+49K13*Text_IO 471e16 32|8w10 8r27
+208U14*Put 32|146s9
+242U14*Put 32|144s9 145s9 147s9
+249U14*Get_Line 32|129s9
+263U14*Put_Line 32|29s17 128s9 172s17
+X 31 temp_package.ads
+8K9*Temp_Package 92E10 98l5 98e17 32|13b14 203l5 203t17
+10R10*Temperature 16r30 28r33 34r32 40r37 40r57 46r37 46r57 52r37 52r57 58r36
+. 58r56 64r34 70r35 70r78 76r35 76r78 82r32 82r55 88r34 88r61 92c10 96e19
+. 32|21r30 60r33 69r32 78r37 78r57 92r37 92r57 106r37 106r57 120r36 120r56
+. 142r34 154r35 154r78 164r35 164r78 180r32 180r55 190r34 190r61
+16U15*Init 16<20 16>43 16>66 32|21b15 31l9 31t13 81s13 83s13 95s13 97s13
+. 109s13 111s13 134s9 156s9 168s13
+16r20 Temp{10R10} 32|21b20 25m13 26m13
+16f43 degree{long_float} 32|21b43 24r18 25r30
+16e66 scale{character} 32|21b66 24r26 26r29
+22U15*test 22>20 22>43 32|24s13 37b15 54l9 54t13 167s13
+22f20 degree{long_float} 32|37b20 40r17 44r17 48r17
+22e43 scale{character} 32|37b43 39r13 39r28 43r16 43r31 47r16 47r31
+28V14*getDegree{long_float} 28>24 32|60b14 63l9 63t18 81s24 83s25 95s25 97s24
+. 109s24 111s25 144s31 156s20 167s18 168s24 182s16 182s35 200s16 200s35
+28r24 Temp{10R10} 32|60b24 62r16
+34V14*getScale{character} 34>23 32|69b14 72l9 72t17 80s13 80s37 82s16 82s40
+. 94s13 94s37 96s16 96s40 108s13 108s37 110s16 110s40 146s14 156s46 167s44
+. 168s50 183s17 183s35 192s13 192s38 194s16 194s41
+34r23 Temp{10R10} 32|69b23 71r16
+40V14*convertF{10R10} 40=24 32|78b14 86l9 86t17 193s22
+40r24 Temp{10R10} 32|78b24 80r22 80r46 81m18 81r34 82r25 82r49 83m18 83r35
+. 85r16
+46V14*convertC{10R10} 46=24 32|92b14 100l9 100t17 195s22
+46r24 Temp{10R10} 32|92b24 94r22 94r46 95m18 95r35 96r25 96r49 97m18 97r34
+. 99r16
+52V14*convertK{10R10} 52=24 32|106b14 114l9 114t17 197s22
+52r24 Temp{10R10} 32|106b24 108r22 108r46 109m18 109r34 110r25 110r49 111m18
+. 111r35 113r16
+58V14*InputOp{10R10} 58=23 32|120b14 136l9 136t16
+58r23 Temp{10R10} 32|120b23 134m14 135r16
+64U15*OutputOp 64>25 32|142b15 148l9 148t17
+64r25 Temp{10R10} 32|142b25 144r41 146r23
+70V14*raiseT{10R10} 70=22 70>48 32|154b14 158l9 158t15
+70r22 Temp{10R10} 32|154b22 156m14 156r30 156r55 157r16
+70f48 factor{long_float} 32|154b48 156r38
+76V14*lowerT{10R10} 76=22 76>48 32|164b14 174l9 174t15
+76r22 Temp{10R10} 32|164b22 167r28 167r53 168m18 168r34 168r59 169r20
+76f48 factor{long_float} 32|164b48 167r36 168r42
+82V14*equals{boolean} 82>22 82>45 32|180b14 184l9 184t15
+82r22 Temp1{10R10} 32|180b22 182r26 183r26
+82r45 Temp2{10R10} 32|180b45 182r45 183r44
+88V14*lessThan{boolean} 88>24 88=47 32|190b14 201t8
+88r24 Temp1{10R10} 32|190b24 192r22 192r47 194r25 194r50 200r26
+88r47 Temp2{10R10} 32|190b47 193m13 193m31 193r31 195m13 195m31 195r31 197m13
+. 197m31 197r31 200r45
+94f13*MyDegree{long_float} 32|25m18 62r21
+95e13*MyScale{character} 32|26m18 71r21
+X 32 temp_package.adb
+15X5 My_Exception 28r18 41r23 45r23 49r23 52r19 171r18
+122a9 t{string} 129m18 131r36 132r18
+123f9 degree{long_float} 131m9 134r20
+124e9 scale{character} 132m9 134r28
+125i9 string_read{natural} 129m21
+

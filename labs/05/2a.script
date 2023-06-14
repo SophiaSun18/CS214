@@ -1,0 +1,17 @@
+Script started on 2023-02-06 20:12:46-05:00 [TERM="xterm-256color" TTY="/dev/pts/1" COLUMNS="80" LINES="66"]
+]0;zs35@gold03: ~/Desktop/214/labs/05[01;32mzs35@gold03[00m:[01;34m~/Desktop/214/labs/05[00m$ clojure
+[KClojure 1.10.1
+[Kuser=> [Kuser=> [Kuser=> (def squareSquare (fn [x][x] (* (* x x)(* x x) (* x x)(* x x))(* (* x x) (* x x)))user=> (def squareSquare (fn [x] (* (* x x) (* x x))))user=> (def squareSquare (fn [x] (* (* x x) (* x x))))user=> [K(def squareSquare (fn [x] (* (* x x) (* x x))))
+[K#'user/squareSquare
+user=> [Kuser=> [Kuser=> (squareSquare 2)user=> (squareSquare 2)user=> [K(squareSquare 2)
+16
+user=> [Kuser=> [Kuser=> (squareSquare -1 2)user=> (squareSquare -2)user=> [K(squareSquare -2)
+16
+user=> [Kuser=> [Kuser=> (su quae reSquare 3)user=> (squareSquare 3)user=> [K(squareSquare 3)
+81
+user=> [Kuser=> [Kuser=> (squareSquare -3)user=> (squareSquare -3)user=> [K(squareSquare -3)
+81
+user=> [Kuser=> [Kuser=> 
+[K]0;zs35@gold03: ~/Desktop/214/labs/05[01;32mzs35@gold03[00m:[01;34m~/Desktop/214/labs/05[00m$ exit
+
+Script done on 2023-02-06 20:13:35-05:00 [COMMAND_EXIT_CODE="0"]

@@ -1,0 +1,102 @@
+Script started on 2023-02-20 14:15:23-05:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="105" LINES="42"]
+]0;zs35@gold06: ~/Desktop/214/projects/06/clojure[01;32mzs35@gold06[00m:[01;34m~/Desktop/214/projects/06/clojure[00m$ cd src
+]0;zs35@gold06: ~/Desktop/214/projects/06/clojure/src[01;32mzs35@gold06[00m:[01;34m~/Desktop/214/projects/06/clojure/src[00m$ cat quadraticRts.   oots.clh j
+;;;; quadraticRoots.clj computes the roots of a quadratic equation.
+;;;;
+;;;; Input: a, b, c, the three factors that are ints.
+;;;; Output: root1, root2, the two roots that are ints.
+;;;;
+;;;; Usage: clojure -m quadraticRoots
+;;;;
+;;;; Student Name: ZeAi Sun
+;;;; Date: Feb 20, 2023
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(ns quadraticRoots)      ; name the program
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; quadraticRoots() computes the roots of a quadratic equation.
+;;; Receive: a, b, c, the three factors.
+;;; Return: root1, root2, the two roots.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defn quadraticRoots [a b c]
+    (let [arg (- (Math/pow b 2) (* 4 a c))]
+        (if (and (not= a 0) (>= arg 0))     ; check if a is not 0 and b^2-4ac is greater than 0.
+            (let [root1 (/ (+ (- 0 b) (Math/sqrt arg)) (* 2 a)) root2 (/ (- (- 0 b) (Math/sqrt arg)) (* 2 a))]
+                 (vector root1 root2)       ; if so, compute the roots and put them into a vector to return.
+            )
+            (vector 0 0)                    ; if not, return 0 for both roots.
+        )
+    )
+)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; main function
+;;; Input: a, b, c, the three factors.
+;;; Output: root1, root2, the two roots.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(defn -main []
+  (print "Enter the value of a: ") (flush)
+  (let
+    [ A (read) ]                      ; read the value of a
+    (print "Enter the value of b: ") (flush)
+    (let 
+        [ B (read) ]                  ; read the value of b
+        (print "Enter the value of c: ") (flush)
+        (let
+            [ C (read)                ; read the value of c
+              result (quadraticRoots A B C)
+              root1 (get result 0)
+              root2 (get result 1)
+            ]
+
+            (printf (str "\nThe first root is \"%s\" and " 
+                    "the second root is \"%s\"\n\n")
+                    root1 root2)
+        )
+    )
+  )
+)
+
+]0;zs35@gold06: ~/Desktop/214/projects/06/clojure/src[01;32mzs35@gold06[00m:[01;34m~/Desktop/214/projects/06/clojure/src[00m$ cd ..
+]0;zs35@gold06: ~/Desktop/214/projects/06/clojure[01;32mzs35@gold06[00m:[01;34m~/Desktop/214/projects/06/clojure[00m$ s cj lojure -m quadraticRoots
+Enter the value of a: 1
+Enter the value of b: 5
+Enter the value of c: 6
+
+The first root is "-2.0" and the second root is "-3.0"
+
+]0;zs35@gold06: ~/Desktop/214/projects/06/clojure[01;32mzs35@gold06[00m:[01;34m~/Desktop/214/projects/06/clojure[00m$ clojure -m quadraticRoots
+Enter the value of a: 
+5
+Enter the value of b: 6 6
+Enter the value of c: 0
+
+The first root is "0.0" and the second root is "-1.2"
+
+]0;zs35@gold06: ~/Desktop/214/projects/06/clojure[01;32mzs35@gold06[00m:[01;34m~/Desktop/214/projects/06/clojure[00m$ clojure -m quadraticRoots
+Enter the value of a: 0
+Enter the value of b: 5
+Enter the value of c: 6
+
+The first root is "0" and the second root is "0"
+
+]0;zs35@gold06: ~/Desktop/214/projects/06/clojure[01;32mzs35@gold06[00m:[01;34m~/Desktop/214/projects/06/clojure[00m$ clojure -m quadraticRoots
+Enter the value of a: 1
+Enter the value of b: 1
+Enter the value of c: 5
+
+The first root is "0" and the second root is "0"
+
+]0;zs35@gold06: ~/Desktop/214/projects/06/clojure[01;32mzs35@gold06[00m:[01;34m~/Desktop/214/projects/06/clojure[00m$ clojure -m quadraticRoots
+Enter the value of a: 1
+Enter the value of b: -7
+Enter the value of c: 3 -3
+
+The first root is "7.405124837953327" and the second root is "-0.405124837953327"
+
+]0;zs35@gold06: ~/Desktop/214/projects/06/clojure[01;32mzs35@gold06[00m:[01;34m~/Desktop/214/projects/06/clojure[00m$ exit
+exit
+
+Script done on 2023-02-20 14:16:36-05:00 [COMMAND_EXIT_CODE="0"]

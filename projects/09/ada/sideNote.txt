@@ -1,0 +1,2 @@
+This program follows the basic structure of java and ruby versions.
+Many details not working, mostly type errors and problem with string slicing.

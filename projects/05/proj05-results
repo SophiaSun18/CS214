@@ -1,0 +1,234 @@
+Script started on 2023-02-13 23:16:14-05:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="80" LINES="24"]
+]0;zs35@gold03: ~/Desktop/214/projects/05/clojure[01;32mzs35@gold03[00m:[01;34m~/Desktop/214/projects/05/clojure[00m$ cat reverse           cd    ca  t    c d scr
+bash: cd: scr: No such file or directory
+]0;zs35@gold03: ~/Desktop/214/projects/05/clojure[01;32mzs35@gold03[00m:[01;34m~/Desktop/214/projects/05/clojure[00m$ cd scr  rc
+]0;zs35@gold03: ~/Desktop/214/projects/05/clojure/src[01;32mzs35@gold03[00m:[01;34m~/Desktop/214/projects/05/clojure/src[00m$ cat reverse.clj
+;;;; reverse.clj reverses the elements being inputted.
+;;;;
+;;;; Input: n-sequence, a sequence of items
+;;;; Output: the reversed sequence
+;;;;
+;;;; Student Name: ZeAi Sun
+;;;; Date: Feb 9, 2023
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(ns reverse)                            ; name the program
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; my-reverse() recursively reverses the input value.
+;;; Receive: n-sequence, a sequence of items
+;;; Output: the reversed sequence
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defn my-reverse [n-sequence]
+    (if (<= (count n-sequence) 1)
+        n-sequence
+        (do
+            (if (list? (first n-sequence))
+                (concat (my-reverse (rest n-sequence)) (my-reverse (list (first n-sequence))))
+                (concat (my-reverse (rest n-sequence)) (list (first n-sequence)))
+            )
+        )
+    )
+)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; -main is a 'driver' for the my-reverse() functions.
+;;; Input: n-sequence, a sequence of items
+;;; Output: the reversed sequence
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defn -main []
+ (print "To reverse, input a sequence: ") (flush)
+ (let
+    [ n (sequence (read)) ] 
+    (println (my-reverse n))
+ )
+)]0;zs35@gold03: ~/Desktop/214/projects/05/clojure/src[01;32mzs35@gold03[00m:[01;34m~/Desktop/214/projects/05/clojure/src[00m$ [K]0;zs35@gold03: ~/Desktop/214/projects/05/clojure/src[01;32mzs35@gold03[00m:[01;34m~/Desktop/214/projects/05/clojure/src[00m$ [K]0;zs35@gold03: ~/Desktop/214/projects/05/clojure/src[01;32mzs35@gold03[00m:[01;34m~/Desktop/214/projects/05/clojure/src[00m$ [K]0;zs35@gold03: ~/Desktop/214/projects/05/clojure/src[01;32mzs35@gold03[00m:[01;34m~/Desktop/214/projects/05/clojure/src[00m$ [K]0;zs35@gold03: ~/Desktop/214/projects/05/clojure/src[01;32mzs35@gold03[00m:[01;34m~/Desktop/214/projects/05/clojure/src[00m$ [K]0;zs35@gold03: ~/Desktop/214/projects/05/clojure/src[01;32mzs35@gold03[00m:[01;34m~/Desktop/214/projects/05/clojure/src[00m$ [K]0;zs35@gold03: ~/Desktop/214/projects/05/clojure/src[01;32mzs35@gold03[00m:[01;34m~/Desktop/214/projects/05/clojure/src[00m$ clojure -m reverse
+To reverse, input a sequence: (1 2 3)
+(3 2 1)
+]0;zs35@gold03: ~/Desktop/214/projects/05/clojure/src[01;32mzs35@gold03[00m:[01;34m~/Desktop/214/projects/05/clojure/src[00m$ clojure -m reverse
+To reverse, input a sequence: ()
+()
+]0;zs35@gold03: ~/Desktop/214/projects/05/clojure/src[01;32mzs35@gold03[00m:[01;34m~/Desktop/214/projects/05/clojure/src[00m$ clojure -m reverse
+To reverse, input a sequence: ((1 2) 3 4)
+(4 3 (1 2))
+]0;zs35@gold03: ~/Desktop/214/projects/05/clojure/src[01;32mzs35@gold03[00m:[01;34m~/Desktop/214/projects/05/clojure/src[00m$ exit
+
+Script done on 2023-02-13 23:17:33-05:00 [COMMAND_EXIT_CODE="0"]
+Script started on 2023-02-13 23:18:06-05:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="80" LINES="68"]
+]0;zs35@gold03: ~/Desktop/214/projects/05/clojure[01;32mzs35@gold03[00m:[01;34m~/Desktop/214/projects/05/clojure[00m$ cd src
+]0;zs35@gold03: ~/Desktop/214/projects/05/clojure/src[01;32mzs35@gold03[00m:[01;34m~/Desktop/214/projects/05/clojure/src[00m$ cd   at superReverse.clj
+;;;; superReverse.clj deep reverses the elements being inputted.
+;;;;
+;;;; Input: n-sequence, a sequence of items
+;;;; Output: the reversed sequence
+;;;;
+;;;; Student Name: ZeAi Sun
+;;;; Date: Feb 13, 2023
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(ns superReverse)                            ; name the program
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; super-reverse() recursively reverses the input value.
+;;; Receive: n-sequence, a sequence of items
+;;; Output: the reversed sequence
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defn super-reverse [n-sequence]
+    (if (<= (count n-sequence) 1)               ; if the list only contains 1 item or is empty, return the list
+        n-sequence
+        (do                                     ; if the list contains more than 1 item
+            (if (list? (first n-sequence))      ; if the first item is a sub-list
+                (super-reverse(cons (super-reverse (first n-sequence)) (super-reverse (rest n-sequence))))  ; super-reverse the sublist as well as the whole list
+                (concat (super-reverse (rest n-sequence)) (list (first n-sequence)))                        ; if not, just reverse the list as normal reverse
+            )
+        )
+    )
+)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; -main is a 'driver' for the super-reverse() functions.
+;;; Input: n-sequence, a sequence of items
+;;; Output: the reversed sequence
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defn -main []
+ (print "To deep reverse, input a sequence: ") (flush)
+ (let
+    [ n (sequence (read)) ] 
+    (println (super-reverse n))
+ )
+)]0;zs35@gold03: ~/Desktop/214/projects/05/clojure/src[01;32mzs35@gold03[00m:[01;34m~/Desktop/214/projects/05/clojure/src[00m$ clojure -m superReverse
+To deep reverse, input a sequence: ( 1 2    )
+()
+]0;zs35@gold03: ~/Desktop/214/projects/05/clojure/src[01;32mzs35@gold03[00m:[01;34m~/Desktop/214/projects/05/clojure/src[00m$ clojure -m superReverse
+To deep reverse, input a sequence: (1 2 3)
+(3 2 1)
+]0;zs35@gold03: ~/Desktop/214/projects/05/clojure/src[01;32mzs35@gold03[00m:[01;34m~/Desktop/214/projects/05/clojure/src[00m$ clojure -m superReverse
+To deep reverse, input a sequence: ((1 2 )  ) 3 4)
+(3 4 (2 1))
+]0;zs35@gold03: ~/Desktop/214/projects/05/clojure/src[01;32mzs35@gold03[00m:[01;34m~/Desktop/214/projects/05/clojure/src[00m$ clojure -m superReverse\
+> 
+To deep reverse, input a sequence: ((1 2) 3 4 (  5 6 6)  7))
+(4 3 (7 6 5) (2 1))
+]0;zs35@gold03: ~/Desktop/214/projects/05/clojure/src[01;32mzs35@gold03[00m:[01;34m~/Desktop/214/projects/05/clojure/src[00m$ exit
+
+Script done on 2023-02-13 23:18:54-05:00 [COMMAND_EXIT_CODE="0"]
+Script started on 2023-02-13 23:19:52-05:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="80" LINES="68"]
+]0;zs35@gold03: ~/Desktop/214/projects/05/clojure[01;32mzs35@gold03[00m:[01;34m~/Desktop/214/projects/05/clojure[00m$ cd src
+]0;zs35@gold03: ~/Desktop/214/projects/05/clojure/src[01;32mzs35@gold03[00m:[01;34m~/Desktop/214/projects/05/clojure/src[00m$ cat member  .clj
+;;;; member.clj checks if an element is in a list.
+;;;;
+;;;; Input: n, an item; n-sequence, a sequence of items
+;;;; Output: True or False, boolean value
+;;;;
+;;;; Student Name: ZeAi Sun
+;;;; Date: Feb 9, 2023
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(ns member)                            ; name the program
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; member?() recursively checks if an item is in a list.
+;;; Receive: n, an item; n-sequence, a sequence of items
+;;; Output: True or False, boolean value
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defn member? [n [n-sequence]]
+    (if (= n (first n-sequence))                    ; if the current item is the target item
+        true                                        ; return true
+        (if (= 1 (count n-sequence))                ; otherwise, check if the current item is the only item in the list
+            false                                   ; if so, return false
+            (member? n (list (rest n-sequence)))    ; if not, recursively call the funtion on the rest of the list
+        )
+    )
+)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; -main is a 'driver' for the member?() functions.
+;;; Input: n, an item; n-sequence, a sequence of items
+;;; Output: True or False, boolean value
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defn -main []
+ (print "To check if an item is in a list, input an item and a sequence: ") (flush)
+ (let
+    [ n (int (read)) 
+      n-seq (sequence (read))] 
+    (println (member? n [n-seq]))
+ )
+)]0;zs35@gold03: ~/Desktop/214/projects/05/clojure/src[01;32mzs35@gold03[00m:[01;34m~/Desktop/214/projects/05/clojure/src[00m$ c clojure -m mme  ember
+To check if an item is in a list, input an item and a sequence: 1 (1 2 3)
+true
+]0;zs35@gold03: ~/Desktop/214/projects/05/clojure/src[01;32mzs35@gold03[00m:[01;34m~/Desktop/214/projects/05/clojure/src[00m$ 4 (   clojure -m member
+To check if an item is in a list, input an item and a sequence: ( 4 (1 2 3)
+false
+]0;zs35@gold03: ~/Desktop/214/projects/05/clojure/src[01;32mzs35@gold03[00m:[01;34m~/Desktop/214/projects/05/clojure/src[00m$ e exit
+
+Script done on 2023-02-13 23:20:19-05:00 [COMMAND_EXIT_CODE="0"]
+Script started on 2023-02-13 23:20:30-05:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="80" LINES="68"]
+]0;zs35@gold03: ~/Desktop/214/projects/05/clojure[01;32mzs35@gold03[00m:[01;34m~/Desktop/214/projects/05/clojure[00m$ cd src
+]0;zs35@gold03: ~/Desktop/214/projects/05/clojure/src[01;32mzs35@gold03[00m:[01;34m~/Desktop/214/projects/05/clojure/src[00m$ cat sb ubsequence.clj
+;;;; subsequence.clj returns the indicated subsequence.
+;;;;
+;;;; Input: n-sequence, a sequence of items; i and n, both integers
+;;;; Output: result, a sequence of items
+;;;;
+;;;; Student Name: ZeAi Sun
+;;;; Date: Feb 9, 2023
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(ns subsequence)                            ; name the program
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; subsequence() recursively returns the indicated subsequence.
+;;; Receive: n-sequence, a sequence of items; i and n, both integers
+;;; Output: result, a sequence of items
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defn subsequence [[n-sequence] i n]
+    (if (or (or (= 0 (count n-sequence)) (> i (count n-sequence))) (> (+ i n) (count n-sequence)))  ; if param is invalid, return nil
+        nil
+        (do                             ; if params are all valid, recursively run the function
+            (if (= n 0)
+                nil
+                (cons (nth n-sequence i) (subsequence [n-sequence] (+ i 1) (- n 1)))
+            )
+        )
+    )
+)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; -main is a 'driver' for the subsequence() functions.
+;;; Input: n-sequence, a sequence of items; i and n, both integers
+;;; Output: result, a sequence of items
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defn -main []
+ (print "Input the sequence, i and n: ") (flush)
+ (let
+    [ n-seq (sequence(read))
+      i (int (read)) 
+      n (int (read)) ] 
+    (println (subsequence [n-seq] i n))
+ )
+)]0;zs35@gold03: ~/Desktop/214/projects/05/clojure/src[01;32mzs35@gold03[00m:[01;34m~/Desktop/214/projects/05/clojure/src[00m$ clojure -m subsequence
+Input the sequence, i and n: (1 23    3 4 5) 1   0 5
+(1 2 3 4 5)
+]0;zs35@gold03: ~/Desktop/214/projects/05/clojure/src[01;32mzs35@gold03[00m:[01;34m~/Desktop/214/projects/05/clojure/src[00m$ clojure -m subsequence
+Input the sequence, i and n: (1 2 3 4 5) 0 10
+nil
+]0;zs35@gold03: ~/Desktop/214/projects/05/clojure/src[01;32mzs35@gold03[00m:[01;34m~/Desktop/214/projects/05/clojure/src[00m$ clojure -m subsequence
+Input the sequence, i and n: (1 2 4   3 4 5) 1 1  0 0 5
+nil
+]0;zs35@gold03: ~/Desktop/214/projects/05/clojure/src[01;32mzs35@gold03[00m:[01;34m~/Desktop/214/projects/05/clojure/src[00m$ clojure -m subsequence
+Input the sequence, i and n: () 1 4
+nil
+]0;zs35@gold03: ~/Desktop/214/projects/05/clojure/src[01;32mzs35@gold03[00m:[01;34m~/Desktop/214/projects/05/clojure/src[00m$ clojure -m subsequence
+Input the sequence, i and n: (1 2 3 4 5 6 7) 2 4
+(3 4 5 6)
+]0;zs35@gold03: ~/Desktop/214/projects/05/clojure/src[01;32mzs35@gold03[00m:[01;34m~/Desktop/214/projects/05/clojure/src[00m$ exit
+
+Script done on 2023-02-13 23:21:40-05:00 [COMMAND_EXIT_CODE="0"]

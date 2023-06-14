@@ -1,0 +1,60 @@
+Script started on 2023-02-13 23:18:06-05:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="80" LINES="68"]
+]0;zs35@gold03: ~/Desktop/214/projects/05/clojure[01;32mzs35@gold03[00m:[01;34m~/Desktop/214/projects/05/clojure[00m$ cd src
+]0;zs35@gold03: ~/Desktop/214/projects/05/clojure/src[01;32mzs35@gold03[00m:[01;34m~/Desktop/214/projects/05/clojure/src[00m$ cd   at superReverse.clj
+;;;; superReverse.clj deep reverses the elements being inputted.
+;;;;
+;;;; Input: n-sequence, a sequence of items
+;;;; Output: the reversed sequence
+;;;;
+;;;; Student Name: ZeAi Sun
+;;;; Date: Feb 13, 2023
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(ns superReverse)                            ; name the program
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; super-reverse() recursively reverses the input value.
+;;; Receive: n-sequence, a sequence of items
+;;; Output: the reversed sequence
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defn super-reverse [n-sequence]
+    (if (<= (count n-sequence) 1)               ; if the list only contains 1 item or is empty, return the list
+        n-sequence
+        (do                                     ; if the list contains more than 1 item
+            (if (list? (first n-sequence))      ; if the first item is a sub-list
+                (super-reverse(cons (super-reverse (first n-sequence)) (super-reverse (rest n-sequence))))  ; super-reverse the sublist as well as the whole list
+                (concat (super-reverse (rest n-sequence)) (list (first n-sequence)))                        ; if not, just reverse the list as normal reverse
+            )
+        )
+    )
+)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; -main is a 'driver' for the super-reverse() functions.
+;;; Input: n-sequence, a sequence of items
+;;; Output: the reversed sequence
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defn -main []
+ (print "To deep reverse, input a sequence: ") (flush)
+ (let
+    [ n (sequence (read)) ] 
+    (println (super-reverse n))
+ )
+)]0;zs35@gold03: ~/Desktop/214/projects/05/clojure/src[01;32mzs35@gold03[00m:[01;34m~/Desktop/214/projects/05/clojure/src[00m$ clojure -m superReverse
+To deep reverse, input a sequence: ( 1 2    )
+()
+]0;zs35@gold03: ~/Desktop/214/projects/05/clojure/src[01;32mzs35@gold03[00m:[01;34m~/Desktop/214/projects/05/clojure/src[00m$ clojure -m superReverse
+To deep reverse, input a sequence: (1 2 3)
+(3 2 1)
+]0;zs35@gold03: ~/Desktop/214/projects/05/clojure/src[01;32mzs35@gold03[00m:[01;34m~/Desktop/214/projects/05/clojure/src[00m$ clojure -m superReverse
+To deep reverse, input a sequence: ((1 2 )  ) 3 4)
+(3 4 (2 1))
+]0;zs35@gold03: ~/Desktop/214/projects/05/clojure/src[01;32mzs35@gold03[00m:[01;34m~/Desktop/214/projects/05/clojure/src[00m$ clojure -m superReverse\
+> 
+To deep reverse, input a sequence: ((1 2) 3 4 (  5 6 6)  7))
+(4 3 (7 6 5) (2 1))
+]0;zs35@gold03: ~/Desktop/214/projects/05/clojure/src[01;32mzs35@gold03[00m:[01;34m~/Desktop/214/projects/05/clojure/src[00m$ exit
+
+Script done on 2023-02-13 23:18:54-05:00 [COMMAND_EXIT_CODE="0"]

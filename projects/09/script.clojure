@@ -1,0 +1,240 @@
+Script started on 2023-03-23 18:39:38-04:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="98" LINES="68"]
+]0;zs35@gold01: ~/Desktop/214/projects/09/clojure[01;32mzs35@gold01[00m:[01;34m~/Desktop/214/projects/09/clojure[00m$ cd src
+]0;zs35@gold01: ~/Desktop/214/projects/09/clojure/src[01;32mzs35@gold01[00m:[01;34m~/Desktop/214/projects/09/clojure/src[00m$ cat Temperature.clh
+cat: Temperature.clh: No such file or directory
+]0;zs35@gold01: ~/Desktop/214/projects/09/clojure/src[01;32mzs35@gold01[00m:[01;34m~/Desktop/214/projects/09/clojure/src[00m$ cat Temperature.clh j
+;; Temperature.clj is a module for our 'Temperature' type-abstraction.
+;;
+;; Completed by: ZeAi Sun
+;; Date: Mar 20, 2023
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(require '[clojure.string :as str])
+
+;; Create a record/struct type named Temperature
+(defrecord Temperature [degrees, scale])
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; test if the given degree and scale constitute a valid temperature.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defn testT [degree scale]
+  (if (and (or (scale == 'f') (scale == 'F')) (< degree -459.37))
+    (throw (Exception. "Invalid Argument."))
+  )
+
+  (if (and (or (scale == 'c') (scale == 'C')) (< degree -273.15))
+    (throw (Exception. "Invalid Argument."))
+  )
+
+  (if (and (or (scale == 'k') (scale == 'K')) (< degree 0))
+    (throw (Exception. "Invalid Argument."))
+  )
+)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; make-Temp constructs a Temperature object from two strings. 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(defn make-Temp [degree, scale]
+  (try
+     (do 
+        (testT degree scale)
+        (->Temperature degree scale))
+     (catch Exception e (str "Invalid Argument!"))
+  )
+)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;  extractor for the degree of a Temperature object.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defn getDegree [Temp]
+  (:degrees Temp)
+)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;  extractor for the scale of a Temperature object.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defn getScale [Temp]
+  (:scale Temp)
+)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;  converter to Temperature in F.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defn convertF [Temp]
+  (if (or (= (getScale Temp) "f") (= (getScale Temp) "F"))
+    Temp
+    (if (or (= (getScale Temp) "c") (= (getScale Temp) "C"))
+      (let [newDegree (format "%.2f" (+ (/ (* (Float/parseFloat (getDegree Temp)) 9) 5) 32))]
+        (->Temperature newDegree "F")
+      )
+
+      (if (or (== (getScale Temp) "k") (== (getScale Temp) "K"))
+        (let [newDegree (format "%.2f" (+ (/ (* (- (Float/parseFloat (getDegree Temp)) 273.15) 9) 5) 32))]
+          (->Temperature newDegree "F")
+        )
+      )
+    )
+  )
+)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;  converter to Temperature in C.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defn convertC [Temp]
+  (if (or (= (getScale Temp) "c") (= (getScale Temp) "C"))
+    Temp
+    (if (or (= (getScale Temp) "f") (= (getScale Temp) "F"))
+      (let [newDegree (format "%.2f" (/ (* (- (Float/parseFloat (getDegree Temp)) 32) 5) 9))]
+        (->Temperature newDegree "C")
+      )
+
+      (if (or (= (getScale Temp) "k") (= (getScale Temp) "K"))
+        (let [newDegree (format "%.2f" (- (Float/parseFloat (getDegree Temp)) 273.15))]
+          (->Temperature newDegree "C")
+        )
+      )  
+    )
+  )
+)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;  converter to Temperature in K.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defn convertK [Temp]
+  (if (or (= (getScale Temp) "k") (=(getScale Temp) "K"))
+    Temp
+    (if (or (= (getScale Temp) "f") (= (getScale Temp) "F"))
+      (let [newDegree (format "%.2f" (+ (/ (- (Float/parseFloat (getDegree Temp)) 32) 1.8) 273.15))]
+        (->Temperature newDegree "K")
+      )
+    
+      (if (or (= (getScale Temp) "c") (= (getScale Temp) "C"))
+        (let [newDegree (format "%.2f" (+ (Float/parseFloat (getDegree Temp)) 273.15))]
+          (->Temperature newDegree "K")
+        )
+      )
+    )
+  )
+)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;  input operation that create a Temperature from a string.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defn InputOp []
+  (let [info (read-line)]
+    (let [infoList (str/split info #" ")]
+      (let [degree (get infoList 0) scale (get infoList 1)]
+        (->Temperature degree scale)
+      )
+    )
+  )
+)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;  output operation that print out a Temperature as a string.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defn OutputOp [Temp]
+  (print (getDegree Temp))
+  (print "    ")
+  (print (getScale Temp))
+  (print "    ")
+)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;  raise the degree of a temperature by the given input.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defn raise [Temp, factor]
+  (->Temperature (+ (Float/parseFloat (getDegree Temp)) (Float/parseFloat factor)) (getScale Temp))
+)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;  lower the degree of a temperature by the given input.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defn lower [Temp, factor]
+  (try
+     (do
+        (testT (- (getDegree Temp) factor) (getScale Temp))
+        (->Temperature (- (getDegree Temp) factor) (getScale Temp)))
+     (catch Exception e (str "Invalid Argument!"))
+  )
+)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; check if two Temperatures are equal.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defn equals [Temp1, Temp2]
+  (and (= (getDegree Temp1) (getDegree Temp2)) (= (getScale Temp1) (getScale Temp2)))
+)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; check if one Temperature is less than the other.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defn lessThan [Temp1, Temp2]
+  (if (or (= (getScale Temp1) "f") (= (getScale Temp1) "F"))
+    (let [newTemp (convertF Temp2)]
+      (< (Float/parseFloat (getDegree Temp1)) (Float/parseFloat (getDegree newTemp)))
+    )
+
+    (if (or (= (getScale Temp1) "c") (= (getScale Temp1) "C"))
+      (let [newTemp (convertC Temp2)]
+        (< (Float/parseFloat (getDegree Temp1)) (Float/parseFloat (getDegree newTemp)))
+      )
+
+      (if (or (= (getScale Temp1) "k") (= (getScale Temp1) "K"))
+        (let [newTemp (convertK Temp2)]
+          (< (Float/parseFloat (getDegree Temp1)) (Float/parseFloat (getDegree newTemp)))
+        )
+      ) 
+    )
+  )
+)]0;zs35@gold01: ~/Desktop/214/projects/09/clojure/src[01;32mzs35@gold01[00m:[01;34m~/Desktop/214/projects/09/clojure/src[00m$ cat tempTester.clj
+;; tempTester.clj tests a Clojure Temperature type,
+;;  stored in Temperature.clj (in the src directory).
+;;
+;; Completed by: ZeAi Sun
+;; Date: Mar 20, 2023
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(ns tempTester)
+
+(load-file "src/Temperature.clj")
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; A simple driver to test our Name functions. 
+;; Output: the results of testing our Name functions.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(defn -main []
+  (let [baseTemp (InputOp) limitTemp (InputOp) stepValue (read-line) ]
+    (loop [newTemp baseTemp]
+      (when (= (lessThan newTemp limitTemp) true)
+        (do
+          (OutputOp (convertF baseTemp))
+          (OutputOp (convertC baseTemp))
+          (OutputOp (convertK baseTemp))
+          (println)
+        )
+        (recur (raise newTemp stepValue))
+      )
+    )
+  )
+  (println "\nAll tests passed!\n")
+)]0;zs35@gold01: ~/Desktop/214/projects/09/clojure/src[01;32mzs35@gold01[00m:[01;34m~/Desktop/214/projects/09/clojure/src[00m$ cat sideNote.txt
+The basic structure of this program follows the basic algorithm from java and ruby versions,
+but certain functions not working correctly.
+equals, lessThan functions not working.
+Error message: class java.lang.Double cannot be cast to class java.lang.String.]0;zs35@gold01: ~/Desktop/214/projects/09/clojure/src[01;32mzs35@gold01[00m:[01;34m~/Desktop/214/projects/09/clojure/src[00m$ exit
+exit
+
+Script done on 2023-03-23 18:42:51-04:00 [COMMAND_EXIT_CODE="0"]
